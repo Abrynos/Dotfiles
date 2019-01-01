@@ -1,0 +1,10 @@
+!.gitignore
+!README.md
+
+!.bash_aliases
+!.bashrc
+!.vimrc
+!.config/i3/*
+!.config/rofi/*
+
+*

@@ -1,0 +1,128 @@
+set $mod Mod1
+font pango:monospace 8
+floating_modifier $mod
+
+# colors
+set $bg-color #2f343f
+set $inactive-bg-color #1c1f25
+set $text-color #f3f4f5
+set $inactive-text-color #676e7d
+set $urgent-bg-color #e53935
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in vertical orientation
+bindsym $mod+v split toggle
+ 
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# set workspace names
+set $workspace1 "Workspace 1"
+set $workspace2 "Workspace 2"
+set $workspace3 "Workspace 3"
+set $workspace4 "Workspace 4"
+set $workspace5 "Workspace 5"
+set $workspace7 "Workspace 6"
+set $workspace7 "Workspace 7"
+set $workspace8 "Workspace 8"
+set $workspace9 "Workspace 9"
+set $workspace0 "Workspace 10"
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace0
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# lock screen
+bindsym $mod+Shift+x exec "~/.config/i3/lock.sh"
+
+# hibernate
+bindsym $mod+Shift+s exec "~/.config/i3/lock.sh; systemctl hibernate -i"
+
+# wallpaper... requires feh to be installed
+exec_always --no-startup-id feh --bg-max /usr/share/backgrounds/gnome/adwaita-lock.jpg
+
+# start rofi (a program launchero
+bindsym $mod+d exec rofi -show run -config ~/.config/rofi/config.rasi
+
+# colorize containers
+client.focused $inactive-bg-color $inactive-bg-color $text-color $inactive-text-color
+client.unfocused $bg-color $bg-color $inactive-text-color $text-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $inactive-text-color
+client.urgent $urgent-bg-color $urgent-bg-color $text-color $inactive-text-color
+
+# colorize bottom bar
+bar {
+	status_command i3status
+	colors {
+		background $inactive-bg-color
+		separator #757575
+		focused_workspace $bg-color $bg-color $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
+	}
+}
+
+# keep numlock on
+exec_always --no-startup-id numlockx on
+exec_always compton -f
+

@@ -1,0 +1,44 @@
+general {
+	output_format = "i3bar"
+	colors = true
+	interval = 5
+	color_good = "#4bb400"
+	color_degraded = "#ba8700"
+	color_bad = "#b40000"
+	markup = "pango"
+}
+
+order += "wireless _first_"
+order += "disk /"
+order += "cpu_temperature 0"
+order += "battery all"
+order += "tztime local"
+
+wireless _first_ {
+	format_up = "wifi: (%essid,%quality) %ip"
+	format_down = "wifi: down"
+}
+
+disk "/" {
+	format = "Disk: %avail"
+}
+
+cpu_temperature 0 {
+	format = "CPU:%degrees°C"
+	max_threshold = 0
+}
+
+battery all {
+	format = "⚡%percentage %remainingh"
+	last_full_capacity = true
+	hide_seconds = true
+	format_down = "No battery"
+	threshold_type = "percentage"
+	low_threshold = 30
+}
+
+tztime local {
+	format = "%Y-%m-%d %H:%M:%S"
+	locale = "de_AT.UTF-8"
+}
+

@@ -1,20 +1,104 @@
+####################################################################################
+#                                      set Variables
+####################################################################################
+# set mod-key to alt
 set $mod Mod1
-font pango:monospace 8
-floating_modifier $mod
 
-# colors
+# Set workspace names
+set $workspace1 "Workspace 1"
+set $workspace2 "Workspace 2"
+set $workspace3 "Workspace 3"
+set $workspace4 "Workspace 4"
+set $workspace5 "Workspace 5"
+set $workspace7 "Workspace 6"
+set $workspace7 "Workspace 7"
+set $workspace8 "Workspace 8"
+set $workspace9 "Workspace 9"
+set $workspace0 "Workspace 10"
+
+# set modes
+set $defaultMode "default"
+set $resizeMode "resize"
+
+# set colors
 set $bg-color #2f343f
 set $inactive-bg-color #1c1f25
 set $text-color #f3f4f5
 set $inactive-text-color #676e7d
 set $urgent-bg-color #e53935
 
-# start a terminal
+
+####################################################################################
+#                                i3 and system management
+####################################################################################
+#
+# i3
+#
+
+# set modifier-key
+floating_modifier $mod
+
+# set font
+font pango:monospace 8
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# start rofi (a program launcher)
+bindsym $mod+d exec "rofi -show run -config ~/.config/rofi/config.rasi"
+
+# open terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
 
+
+#
+# system
+#
+# lock screen
+bindsym $mod+Shift+x exec "~/.config/i3/lock.sh"
+
+# hibernate
+bindsym $mod+Shift+s exec "~/.config/i3/lock.sh; systemctl hibernate -i"
+
+# keep numlock on
+exec_always --no-startup-id numlockx on
+
+# slight animations (ease-in and ease-out when switching workspaces for example)
+exec_always compton -f
+
+# wallpaper (requires feh to be installed)
+exec_always --no-startup-id feh --bg-max /usr/share/backgrounds/gnome/adwaita-lock.jpg
+
+# colorize containers
+client.focused $inactive-bg-color $inactive-bg-color $text-color $inactive-text-color
+client.unfocused $bg-color $bg-color $inactive-text-color $text-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $inactive-text-color
+client.urgent $urgent-bg-color $urgent-bg-color $text-color $inactive-text-color
+
+# colorize bar
+bar {
+	status_command i3status
+	colors {
+		background $inactive-bg-color
+		separator #757575
+		focused_workspace $bg-color $bg-color $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
+		statusline #898f9f
+	}
+}
+
+
+
+####################################################################################
+#                                 window management
+####################################################################################
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -29,28 +113,19 @@ bindsym $mod+Shift+l move right
 
 # split in vertical orientation
 bindsym $mod+v split toggle
- 
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
+# change container layout
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
-# set workspace names
-set $workspace1 "Workspace 1"
-set $workspace2 "Workspace 2"
-set $workspace3 "Workspace 3"
-set $workspace4 "Workspace 4"
-set $workspace5 "Workspace 5"
-set $workspace7 "Workspace 6"
-set $workspace7 "Workspace 7"
-set $workspace8 "Workspace 8"
-set $workspace9 "Workspace 9"
-set $workspace0 "Workspace 10"
 
-# switch to workspace
+####################################################################################
+#                                workspace management
+####################################################################################
+# switch to workspaces
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -74,56 +149,22 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace0
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-mode "resize" {
+####################################################################################
+#                                       modes
+####################################################################################
+# resize mode
+bindsym $mod+r mode $resizeMode
+
+mode $resizeMode {
 	bindsym h resize shrink width 10 px or 10 ppt
 	bindsym j resize grow height 10 px or 10 ppt
 	bindsym k resize shrink height 10 px or 10 ppt
 	bindsym l resize grow width 10 px or 10 ppt
 
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+	bindsym Return mode $defaultMode
+	bindsym Escape mode $defaultMode
+	bindsym $mod+r mode $defaultMode
 }
-
-bindsym $mod+r mode "resize"
-
-# lock screen
-bindsym $mod+Shift+x exec "~/.config/i3/lock.sh"
-
-# hibernate
-bindsym $mod+Shift+s exec "~/.config/i3/lock.sh; systemctl hibernate -i"
-
-# wallpaper... requires feh to be installed
-exec_always --no-startup-id feh --bg-max /usr/share/backgrounds/gnome/adwaita-lock.jpg
-
-# start rofi (a program launchero
-bindsym $mod+d exec rofi -show run -config ~/.config/rofi/config.rasi
-
-# colorize containers
-client.focused $inactive-bg-color $inactive-bg-color $text-color $inactive-text-color
-client.unfocused $bg-color $bg-color $inactive-text-color $text-color
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $inactive-text-color
-client.urgent $urgent-bg-color $urgent-bg-color $text-color $inactive-text-color
-
-# colorize bar
-bar {
-	status_command i3status
-	colors {
-		background $inactive-bg-color
-		separator #757575
-		focused_workspace $bg-color $bg-color $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
-		statusline #898f9f
-	}
-}
-
-# keep numlock on
-exec_always --no-startup-id numlockx on
-exec_always compton -f
 

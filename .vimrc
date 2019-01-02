@@ -45,10 +45,11 @@ map d :wincmd w<cr>
 map q :q<cr>
 map w :w<cr>
 map <C-g> :DiffConflicts<cr>
-map 2 :diffget 2<cr>:diffu<cr>
-map 3 :diffget 3<cr>:diffu<cr>
+"map 2 :diffget 2<cr>:diffu<cr>
+"map 3 :diffget 3<cr>:diffu<cr>
 xnoremap p "0p
 inoremap <Nul> <C-n>
+
 set number
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 set foldmethod=indent

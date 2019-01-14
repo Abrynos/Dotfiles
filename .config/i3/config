@@ -19,6 +19,7 @@ set $workspace0 "Workspace 10"
 # set modes
 set $defaultMode "default"
 set $resizeMode "resize"
+set $monitorMode "monitor"
 
 # set colors
 set $bg-color #2f343f
@@ -60,12 +61,6 @@ bindsym $mod+q kill
 #
 # system
 #
-# fix problems with multi-monitor setups
-# as no trigger for this exists this will fix it as soon as you in-place restart i3
-# you could also run these commands manually or put them into a script
-exec_always for display in `xrandr | grep 'disconnected' | cut -f1 -d' '`; do xrandr --output $display --off; done
-exec_always for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --right-of `xrandr | grep ' connected' | grep 'primary' | cut -f1 -d' '`; done
-
 # lock screen
 bindsym $mod+Shift+x exec "~/.config/i3/lock.sh"
 
@@ -178,5 +173,23 @@ mode $resizeMode {
 	bindsym Return mode $defaultMode
 	bindsym Escape mode $defaultMode
 	bindsym $mod+r mode $defaultMode
+}
+
+bindsym $mod+m mode $monitorMode
+
+mode $monitorMode {
+	# update - turn all disconnected displays off
+	bindsym $mod+u exec "for display in `xrandr | grep 'disconnected' | cut -f1 -d' '`; do xrandr --output $display --off; done"
+	# move connected monitors relative to primary
+	bindsym $mod+h exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --left-of `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	bindsym $mod+j exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --below `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	bindsym $mod+k exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --above `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	bindsym $mod+l exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --right-of `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	# duplicate primary monitor
+	bindsym $mod+d exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --same-as `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+
+	bindsym Return mode $defaultMode
+	bindsym Escape mode $defaultMode
+	bindsym $mod+m mode $defaultMode
 }
 

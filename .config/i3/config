@@ -26,7 +26,7 @@ set $bg-color #2f343f
 set $inactive-bg-color #1c1f25
 set $text-color #f3f4f5
 set $inactive-text-color #676e7d
-set $urgent-bg-color #e53935
+set $urgent-bg-color #bb5500
 
 
 ####################################################################################
@@ -77,10 +77,11 @@ exec_always compton -f
 exec_always --no-startup-id feh --bg-max /usr/share/backgrounds/gnome/adwaita-lock.jpg
 
 # colorize containers
-client.focused $inactive-bg-color $inactive-bg-color $text-color $inactive-text-color
-client.unfocused $bg-color $bg-color $inactive-text-color $text-color
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $inactive-text-color
-client.urgent $urgent-bg-color $urgent-bg-color $text-color $inactive-text-color
+#                       border               background           text                 indicator
+client.focused          $inactive-bg-color   $inactive-bg-color   $text-color          $inactive-text-color
+client.unfocused        $bg-color $bg-color  $inactive-text-color $text-color
+client.focused_inactive $inactive-bg-color   $inactive-bg-color   $inactive-text-color $inactive-text-color
+client.urgent           $urgent-bg-color     $urgent-bg-color     $text-color          $inactive-text-color
 
 # colorize bar
 bar {

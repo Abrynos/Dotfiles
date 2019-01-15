@@ -31,6 +31,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'whiteinge/diffconflicts'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'jreybert/vimagit'
 
 " end plugin definition
 call vundle#end()
@@ -38,6 +40,14 @@ call vundle#end()
 " ------------------------------------------------------------------
 " ---------------------- CUSTOM CONFIGURATION ----------------------
 " ------------------------------------------------------------------
+"  these settings have to be done before my mappings as they would not let me bind <C-n> otherwise
+let g:multi_cursor_use_default_mapping = 0
+let g:multi_cursor_exit_from_visual_mode = 0
+let g:multi_cursor_exit_from_insert_mode = 0
+let g:multi_cursor_start_key = '<C-m>'
+let g:multi_cursor_next_key = '<C-m>'
+let g:multi_cursor_quit_key = '<Esc>'
+
 map <C-n> :NERDTreeToggle<CR>
 map <tab> :tabn<cr>
 map <S-Tab> :tabp<cr>

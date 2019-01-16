@@ -85,7 +85,8 @@ client.urgent           $urgent-bg-color     $urgent-bg-color     $text-color   
 
 # colorize bar
 bar {
-	status_command i3status
+	status_command i3blocks
+	font pango:monospace 8, FontAwesome 8
 	colors {
 		background $inactive-bg-color
 		separator #757575

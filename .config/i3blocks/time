@@ -1,0 +1,10 @@
+#!/bin/sh
+
+FORMAT="%Y-%m-%d %H:%M:%S"
+DATETIME=$(date "+${FORMAT}")
+COLOR="#0066ff"
+
+echo "<span color='${COLOR}'></span> ${DATETIME}"
+echo "<span color='${COLOR}'></span> ${DATETIME}"
+echo ""
+

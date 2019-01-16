@@ -1,0 +1,20 @@
+#!/bin/bash
+
+URGENT_VALUE=90
+URGENT_COLOR="#ff0000"
+DEVICE_NAME="Core 0"
+
+TMP=$(sensors | grep "${DEVICE_NAME}" | grep -oE "[\+\-]?[0-9]*.[0-9]*°C" | sed -n '1p' | tr -d '+°C')
+
+
+if (( $(echo "$TMP > $URGENT_VALUE" | bc -l) ));
+then
+	echo "<span color='${URGENT_COLOR}'>  </span><span color='${URGENT_COLOR}'>${TMP}°C </span>"
+	echo "<span color='${URGENT_COLOR}'>  </span><span color='${URGENT_COLOR}'>${TMP}°C </span>"
+else
+	echo "<span color='${URGENT_COLOR}'>  </span>${TMP}°C"
+	echo "<span color='${URGENT_COLOR}'>  </span>${TMP}°C"
+fi
+
+echo ""
+

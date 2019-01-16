@@ -1,0 +1,36 @@
+#!/bin/bash
+
+COLOR_BAD="#ff0000"
+COLOR_GOOD="#4bb400"
+BAD_VALUE=10
+GOOD_VALUE=50
+
+TMP=$(nmcli d | grep wifi)
+DEVICE=$(echo ${TMP} | cut -d\  -f1)
+STATUS=$(cat /sys/class/net/${DEVICE}/operstate)
+
+if `echo $TMP | grep -q "connected"`;
+then
+	IP=$(ip route | grep -E "^[0-9].*${DEVICE}" | cut -d\  -f9 | grep -v '^$' | head -n 1)
+	QUALITY=$(grep $DEVICE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+	SSID=$(nmcli d wifi | tail -n +2 | grep -E '^\*' | sed -E "s/ +/ /g" | cut -d\  -f2)
+	
+	if [[ $QUALITY -gt $GOOD_VALUE ]];
+	then
+		echo "<span color='${COLOR_GOOD}'>  (${SSID} ${QUALITY}%) ${IP}</span>"
+		echo "<span color='${COLOR_GOOD}'>  (${SSID} ${QUALITY}%) ${IP}</span>"
+	elif [[ $QUALITY -lt $BAD_VALUE ]];
+	then
+		echo "<span color='${COLOR_BAD}'>  (${SSID} ${QUALITY}%) ${IP}</span>"
+		echo "<span color='${COLOR_BAD}'>  (${SSID} ${QUALITY}%) ${IP}</span>"
+	else
+		echo "  (${SSID} ${QUALITY}%) ${IP}"
+		echo "  (${SSID} ${QUALITY}%) ${IP}"
+	fi
+else
+	echo "<span color='${COLOR_BAD}'>  ${STATUS}</span>"
+	echo "<span color='${COLOR_BAD}'>  ${STATUS}</span>"
+fi
+
+echo ""
+

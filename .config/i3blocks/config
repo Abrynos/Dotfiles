@@ -1,0 +1,15 @@
+command=/home/abrynos/.config/i3blocks/$BLOCK_NAME
+markup=pango
+
+[wifi]
+interval=15
+
+[CPU]
+interval=15
+
+[battery]
+interval=15
+
+[time]
+interval=5
+

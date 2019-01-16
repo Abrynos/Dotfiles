@@ -1,0 +1,36 @@
+#!/bin/bash
+
+BATTERY=0
+BATTERY_INFO=$(acpi -b | grep "Battery ${BATTERY}")
+BATTERY_STATE=$(echo "${BATTERY_INFO}" | grep -wo "Full\|Charging\|Discharging")
+BATTERY_POWER=$(echo "${BATTERY_INFO}" | grep -o '[0-9]\+%' | tr -d '%')
+BATTERY_TIME=$(echo "${BATTERY_INFO}" | cut -d\  -f5 | grep -oE '^[0-9]{2}:[0-9]{2}')
+URGENT_VALUE=15
+
+BOLT_COLOR="#ff9900"
+BAD_COLOR="#ff0000"
+NEUTRAL_COLOR="#898f9f"
+
+if [[ "${BATTERY_STATE}" = "Charging" ]];
+then
+	echo "<span color='${BOLT_COLOR}'>  </span>${BATTERY_POWER}%"
+	echo "<span color='${BOLT_COLOR}'>  </span>${BATTERY_POWER}%"
+elif [[ "${BATTERY_STATE}" = "Discharging" ]];
+then
+	if [[ "${BATTERY_POWER}" -le "${URGENT_VALUE}" ]];
+	then
+		echo "<span color='${BAD_COLOR}'>  ${BATTERY_POWER}% ${BATTERY_TIME}h</span>"
+		echo "<span color='${BAD_COLOR}'>  ${BATTERY_POWER}% ${BATTERY_TIME}h</span>"
+	else
+		echo "<span color='${BOLT_COLOR}'>  </span>${BATTERY_POWER}% ${BATTERY_TIME}h"
+		echo "<span color='${BOLT_COLOR}'>  </span>${BATTERY_POWER}% ${BATTERY_TIME}h"
+	fi
+else
+	echo "<span color='${BOLT_COLOR}'>  </span>${BATTERY_POWER}% ${BATTERY_TIME}h"
+	echo "<span color='${BOLT_COLOR}'>  </span>${BATTERY_POWER}% ${BATTERY_TIME}h"
+fi
+
+echo ""
+
+
+

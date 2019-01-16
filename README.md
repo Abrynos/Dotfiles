@@ -1,9 +1,24 @@
-# Setup of a new system
-- `sudo apt update && sudo apt upgrade`
-- `sudo apt install i3`
-- Choose i3 as default
-- `sudo apt install --no-install-recommends scrot thunar lxappearance numlockx arc-theme imagemagick rofi compton feh`
-- Open lxappearance and choose arc-darker as theme.
-- `git config --global core.editor "vim"`
-- `git config --global user.name "Abrynos"`
+Programs:
+- i3
+- i3blocks
+- scrot
+- thunar
+- lxappearance
+- numlockx
+- arc-theme
+- imagemagick
+- fonts-font-awesome
+- rofi
+- compton
+- feh
+- xrandr
+- acpi
+
+Installation
+```bash
+sudo apt install i3 git
+sudo apt install scrot i3blocks thunar lxappearance numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh acpi x11-xserver-utils --no-install-recommends
+git config --global core.editor "vim"
+git config --global user.name "Abrynos"
+```
 

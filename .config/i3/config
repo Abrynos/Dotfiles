@@ -74,7 +74,7 @@ exec_always --no-startup-id numlockx on
 exec_always compton -f
 
 # wallpaper (requires feh to be installed)
-exec_always --no-startup-id feh --bg-max /usr/share/backgrounds/gnome/adwaita-lock.jpg
+exec_always --no-startup-id feh --bg-max ~/.config/i3/background.jpg
 
 # colorize containers
 #                       border               background           text                 indicator

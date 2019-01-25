@@ -11,7 +11,7 @@ BOLT_COLOR="#ff9900"
 BAD_COLOR="#ff0000"
 NEUTRAL_COLOR="#898f9f"
 
-if [[ "${BATTERY_STATE}" = "Charging" ]];
+if [[ "${BATTERY_STATE}" = "Charging" || "${BATTERY_STATE}" = "Full" ]];
 then
 	echo "<span color='${BOLT_COLOR}'>  </span>${BATTERY_POWER}%"
 	echo "<span color='${BOLT_COLOR}'>  </span>${BATTERY_POWER}%"

@@ -20,6 +20,7 @@ set $workspace0 "Workspace 10"
 set $defaultMode "default"
 set $resizeMode "resize"
 set $monitorMode "monitor"
+set $intellijMode "intellij"
 
 # set colors
 set $bg-color #2f343f
@@ -193,5 +194,11 @@ mode $monitorMode {
 	bindsym Return mode $defaultMode
 	bindsym Escape mode $defaultMode
 	bindsym $mod+m mode $defaultMode
+}
+
+bindsym $mod+i mode $intellijMode
+
+mode $intellijMode {
+	bindsym $mod+i mode $defaultMode
 }
 

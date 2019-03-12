@@ -5,16 +5,16 @@
 set $mod Mod1
 
 # Set workspace names
-set $workspace1 "Workspace 1"
-set $workspace2 "Workspace 2"
-set $workspace3 "Workspace 3"
-set $workspace4 "Workspace 4"
-set $workspace5 "Workspace 5"
-set $workspace6 "Workspace 6"
-set $workspace7 "Workspace 7"
-set $workspace8 "Workspace 8"
-set $workspace9 "Workspace 9"
-set $workspace0 "Workspace 10"
+set $workspace1 "1: Workspace 1"
+set $workspace2 "2: Workspace 2"
+set $workspace3 "3: Workspace 3"
+set $workspace4 "4: Workspace 4"
+set $workspace5 "5: Workspace 5"
+set $workspace6 "6: Workspace 6"
+set $workspace7 "7: Workspace 7"
+set $workspace8 "8: Workspace 8"
+set $workspace9 "9: Workspace 9"
+set $workspace0 "10: Workspace 10"
 
 # set modes
 set $defaultMode "default"
@@ -86,6 +86,7 @@ client.urgent           $urgent-bg-color     $urgent-bg-color     $text-color   
 
 # colorize bar
 bar {
+	strip_workspace_numbers yes
 	status_command i3blocks
 	font pango:monospace 8, FontAwesome 8
 	colors {

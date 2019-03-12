@@ -24,6 +24,7 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 xset b off
+set bell-style none
 
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
 

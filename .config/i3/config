@@ -20,7 +20,8 @@ set $workspace0 "10: Workspace 10"
 set $defaultMode "default"
 set $resizeMode "resize"
 set $monitorMode "monitor"
-set $intellijMode "intellij"
+# i initially named it intellij-mode this beceause IntelliJ uses Alt for the most important keybindings and I'm too lazy to change those
+set $noModMode "no mod key"
 
 # set colors
 set $bg-color #2f343f
@@ -39,6 +40,12 @@ set $urgent-bg-color #bb5500
 
 # set modifier-key
 floating_modifier $mod
+
+# disable focus whenever you move the mouse
+focus_follows_mouse no
+
+# disable mouse teleporting to center of window if switching display output
+mouse_warping none
 
 # set font
 font pango:monospace 8
@@ -77,6 +84,9 @@ exec_always compton -f
 # wallpaper (requires feh to be installed)
 exec_always --no-startup-id feh --bg-max ~/.config/i3/background.jpg
 
+# network manager applet in taskbar
+exec_always --no-startup-id nm-applet
+
 # colorize containers
 #                       border               background           text                 indicator
 client.focused          $inactive-bg-color   $inactive-bg-color   $text-color          $inactive-text-color
@@ -98,7 +108,6 @@ bar {
 		statusline #898f9f
 	}
 }
-
 
 
 ####################################################################################
@@ -167,6 +176,10 @@ bindsym $mod+Control+Shift+l move workspace to output right
 ####################################################################################
 # resize mode
 bindsym $mod+r mode $resizeMode
+bindsym $mod+m mode $monitorMode
+# you can remember the 'i' key by remembering I did this because of IntelliJ
+bindsym $mod+i mode $noModMode
+
 
 mode $resizeMode {
 	bindsym h resize shrink width 10 px or 10 ppt
@@ -179,27 +192,25 @@ mode $resizeMode {
 	bindsym $mod+r mode $defaultMode
 }
 
-bindsym $mod+m mode $monitorMode
 
 mode $monitorMode {
 	# update - turn all disconnected displays off
-	bindsym $mod+u exec "for display in `xrandr | grep 'disconnected' | cut -f1 -d' '`; do xrandr --output $display --off; done"
+	bindsym u exec "for display in `xrandr | grep 'disconnected' | cut -f1 -d' '`; do xrandr --output $display --off; done"
 	# move connected monitors relative to primary
-	bindsym $mod+h exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --left-of `xrandr | grep 'primary' | cut -f1 -d' '`; done"
-	bindsym $mod+j exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --below `xrandr | grep 'primary' | cut -f1 -d' '`; done"
-	bindsym $mod+k exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --above `xrandr | grep 'primary' | cut -f1 -d' '`; done"
-	bindsym $mod+l exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --right-of `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	bindsym h exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --left-of `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	bindsym j exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --below `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	bindsym k exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --above `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	bindsym l exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --right-of `xrandr | grep 'primary' | cut -f1 -d' '`; done"
 	# duplicate primary monitor
-	bindsym $mod+d exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --same-as `xrandr | grep 'primary' | cut -f1 -d' '`; done"
+	bindsym d exec "for display in `xrandr | grep ' connected' | grep -v 'primary' | cut -f1 -d' '`; do xrandr --output $display --auto --same-as `xrandr | grep 'primary' | cut -f1 -d' '`; done"
 
 	bindsym Return mode $defaultMode
 	bindsym Escape mode $defaultMode
 	bindsym $mod+m mode $defaultMode
 }
 
-bindsym $mod+i mode $intellijMode
 
-mode $intellijMode {
+mode $noModMode {
 	bindsym $mod+i mode $defaultMode
 }
 

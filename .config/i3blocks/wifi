@@ -9,7 +9,7 @@ TMP=$(nmcli d | grep wifi)
 DEVICE=$(echo ${TMP} | cut -d\  -f1)
 STATUS=$(cat /sys/class/net/${DEVICE}/operstate)
 
-if `echo $TMP | grep -q "connected"`;
+if `echo $TMP | grep -q " connected"`;
 then
 	IP=$(ip route | grep -E "^[0-9].*${DEVICE}" | cut -d\  -f9 | grep -v '^$' | head -n 1)
 	QUALITY=$(grep $DEVICE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')

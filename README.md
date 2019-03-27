@@ -17,4 +17,6 @@ vim +PluginInstall +qall
 git config --global core.editor "vim"
 git config --global user.name "Abrynos"
 ```
+## Franz messenger
+clone `https://github.com/kytwb/franz.git` and follow the installation instructions in their README
 

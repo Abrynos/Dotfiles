@@ -87,6 +87,9 @@ exec_always --no-startup-id feh --bg-max ~/.config/i3/background.jpg
 # network manager applet in taskbar
 exec_always --no-startup-id nm-applet
 
+# volume control applet in taskbar
+exec_always --no-startup-id volumeicon
+
 # colorize containers
 #                       border               background           text                 indicator
 client.focused          $inactive-bg-color   $inactive-bg-color   $text-color          $inactive-text-color

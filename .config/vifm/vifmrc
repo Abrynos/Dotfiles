@@ -149,4 +149,5 @@ mark h ~/
 " when we exit vifm the bash is in the folder we left
 command Q :execute '!echo %d > ~/.config/vifm/lastdir' | quit
 map q :Q<cr>
+map d :wincmd w<cr>
 

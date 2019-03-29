@@ -15,7 +15,7 @@
 
     show_age_threshold = 60
 
-    word_wrap = no
+    word_wrap = yes
 
     ignore_newline = no
 

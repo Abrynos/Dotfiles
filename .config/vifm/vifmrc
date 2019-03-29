@@ -64,6 +64,7 @@ command! diff vim -d %f %F
 command! zip zip -r %f.zip %f
 command! make !!make %a
 command! mv :!mv %f %a
+command! cp :!cp %f %a
 command! reload :write | restart
 
 " ------------------------------------------------------------------------------

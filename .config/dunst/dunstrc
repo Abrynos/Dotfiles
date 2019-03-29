@@ -1,0 +1,89 @@
+[global]
+    font = Monospace 8
+
+    allow_markup = yes
+
+    format = "<b>%s</b>\n%b"
+
+    sort = yes
+
+    indicate_hidden = yes
+
+    alignment = center
+
+    bounce_freq = 0
+
+    show_age_threshold = 60
+
+    word_wrap = no
+
+    ignore_newline = no
+
+    geometry = "300x5-30+20"
+
+    shrink = no
+
+    transparency = 5
+
+    idle_threshold = 0
+
+    monitor = 0
+
+    follow = mouse
+
+    sticky_history = no
+
+    history_length = 20
+
+    show_indicators = yes
+
+    line_height = 1
+
+    separator_height = 2
+
+    padding = 8
+
+    horizontal_padding = 8
+
+    separator_color = frame
+
+    startup_notification = false
+
+    dmenu = /usr/bin/dmenu -p dunst:
+
+    browser = /usr/bin/firefox -new-tab
+
+    icon_position = off
+
+    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
+
+[frame]
+    width = 1
+    color = "#676e7d"
+
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+
+[urgency_low]
+    background = "#2f343f"
+    foreground = "#8dc185"
+    timeout = 10
+
+
+[urgency_normal]
+    background = "#2f343f"
+    foreground = "#a7aead"
+    timeout = 10
+
+
+[urgency_critical]
+    background = "#2f343f"
+    foreground = "#bb5500"
+    timeout = 0
+

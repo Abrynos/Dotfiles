@@ -90,7 +90,7 @@ exec_always --no-startup-id feh --bg-max ~/.config/i3/background.jpg
 exec_always --no-startup-id nm-applet
 
 # volume control applet in taskbar
-exec --no-startup-id volumeicon
+exec_always --no-startup-id if ! pidof -o %PPID -x "volumeicon">/dev/null; then volumeicon; fi
 
 # colorize containers
 #                       border               background           text                 indicator
@@ -222,4 +222,3 @@ mode $monitorMode {
 mode $noModMode {
 	bindsym $mod+i mode $defaultMode
 }
-

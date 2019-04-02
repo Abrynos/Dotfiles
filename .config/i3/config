@@ -178,6 +178,9 @@ bindsym $mod+Control+Shift+l move workspace to output right
 # special workspaces
 bindsym $mod+c workspace $workspaceCommunication
 assign [class="Franz"] $workspaceCommunication
+assign [class="Thunderbird"] $workspaceCommunication
+for_window [class="Franz"] layout tabbed
+for_window [class="Thunderbird"] layout tabbed
 
 
 ####################################################################################

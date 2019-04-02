@@ -62,6 +62,7 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
 command! diff vim -d %f %F
 command! zip zip -r %f.zip %f
+command! unzip unzip %f
 command! make !!make %a
 command! mv :!mv %f %a
 command! cp :!cp %f %a
@@ -129,8 +130,8 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 
 " ------------------------------------------------------------------------------
 " preview window
-nnoremap p :view<cr>
-vnoremap p :view<cr>gv
+nnoremap <c-p> :view<cr>
+vnoremap <c-p> :view<cr>gv
 
 " Yank current directory path into the clipboard
 nnoremap yd :!echo %d | xclip %i<cr>

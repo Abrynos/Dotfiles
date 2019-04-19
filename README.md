@@ -2,7 +2,7 @@
 ## apt commands
 ```bash
 sudo apt install xinit i3 vim git network-manager debconf
-sudo apt install scrot i3blocks thunar lxappearance network-manager-gnome inkscape lm-sensors numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh gnome-terminal chromium acpi gtk2-engines-pixbuf x11-xserver-utils vifm alsa-utils volumeicon-alsa--no-install-recommends
+sudo apt install scrot i3blocks thunar lxappearance network-manager-gnome inkscape lm-sensors numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh gnome-terminal chromium acpi gtk2-engines-pixbuf x11-xserver-utils vifm alsa-utils volumeicon-alsa neofetch --no-install-recommends
 ```
 ## monitor and visual configuration
 you might want to change LVDS-1 to your primary monitor

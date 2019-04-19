@@ -114,3 +114,5 @@ fi
 
 xset b off
 
+neofetch
+

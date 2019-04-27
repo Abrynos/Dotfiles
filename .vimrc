@@ -23,7 +23,6 @@ Plugin 'mxw/vim-jsx'
 Plugin 'elzr/vim-json'
 Plugin 'isRuslan/vim-es6'
 Plugin 'posva/vim-vue'
-Plugin 'skammer/vim-css-color'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
@@ -33,6 +32,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'whiteinge/diffconflicts'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jreybert/vimagit'
+Plugin 'lervag/vimtex'
 
 " end plugin definition
 call vundle#end()

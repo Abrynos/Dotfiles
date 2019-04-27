@@ -287,3 +287,4 @@ config="on"
 # Path to custom config file location
 # Values:  '/path/to/config'
 config_file="${XDG_CONFIG_HOME:-${HOME}/.config}/neofetch/config"
+

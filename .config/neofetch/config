@@ -19,7 +19,7 @@ print_info() {
     info "WM" wm
     info "WM Theme" wm_theme
     info "CPU" cpu
-    info "GPU" gpu
+#    info "GPU" gpu
     info "Memory" memory
     info "CPU Usage" cpu_usage
     info "Disk" disk

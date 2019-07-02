@@ -77,6 +77,10 @@ filextype *.ps,*.eps,*.ps.gz
 filextype *.html,*.htm
         \ less %f,
 
+" PDF
+filetype *.pdf
+        \ xdg-open %f,
+
 " Man page
 filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b

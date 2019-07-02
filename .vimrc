@@ -51,9 +51,7 @@ let g:multi_cursor_quit_key = '<Esc>'
 map <C-n> :NERDTreeToggle<CR>
 map <tab> :tabn<cr>
 map <S-Tab> :tabp<cr>
-map d :wincmd w<cr> 
 map q :q<cr>
-map w :w<cr>
 map <C-g> :DiffConflicts<cr>
 "map 2 :diffget 2<cr>:diffu<cr>
 "map 3 :diffget 3<cr>:diffu<cr>

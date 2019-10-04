@@ -15,7 +15,7 @@ set $workspace7 "7: Workspace 7"
 set $workspace8 "8: Workspace 8"
 set $workspace9 "9: Workspace 9"
 set $workspace0 "10: Workspace 10"
-# dedicated workspace for Franz (https://meetfranz.com) and any other messengers
+# dedicated workspace for Franz (https://meetfranz.com) [non-commercial variant github.com/kytwb/Ferdi] and other messengers
 set $workspaceCommunication "11: Communication"
 
 # set modes
@@ -177,9 +177,9 @@ bindsym $mod+Control+Shift+l move workspace to output right
 
 # special workspaces
 bindsym $mod+c workspace $workspaceCommunication
-assign [class="Franz"] $workspaceCommunication
+assign [class="Ferdi"] $workspaceCommunication
 assign [class="Thunderbird"] $workspaceCommunication
-for_window [class="Franz"] layout tabbed
+for_window [class="Ferdi"] layout tabbed
 for_window [class="Thunderbird"] layout tabbed
 
 

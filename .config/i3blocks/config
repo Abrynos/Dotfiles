@@ -1,4 +1,4 @@
-command=/home/abrynos/.config/i3blocks/$BLOCK_NAME
+command=~/.config/i3blocks/$BLOCK_NAME
 markup=pango
 
 [wifi]

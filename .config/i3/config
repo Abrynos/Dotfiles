@@ -75,7 +75,7 @@ bindsym $mod+q kill
 bindsym $mod+Shift+x exec "~/.config/i3/lock.sh"
 
 # hibernate
-bindsym $mod+Shift+s exec "~/.config/i3/lock.sh; systemctl hibernate -i"
+bindsym $mod+Shift+s exec "~/.config/i3/lock.sh; sleep 1; systemctl hibernate -i"
 
 # keep numlock on
 exec_always --no-startup-id numlockx on

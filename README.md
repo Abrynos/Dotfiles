@@ -1,13 +1,15 @@
 # Installation
-## apt commands
+## packages
 ```bash
-sudo apt install xinit i3 vim git network-manager debconf
-sudo apt install scrot i3blocks curl thunar lxappearance network-manager-gnome inkscape lm-sensors numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh gnome-terminal chromium acpi gtk2-engines-pixbuf x11-xserver-utils vifm alsa-utils volumeicon-alsa neofetch --no-install-recommends
+su
+apt install xinit i3 vim git network-manager debconf sudo
+exit
+sudo apt install scrot i3blocks curl thunar lxappearance network-manager-gnome inkscape lm-sensors numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh gnome-terminal chromium chromium-sandbox acpi gtk2-engines-pixbuf x11-xserver-utils vifm alsa-utils volumeicon-alsa neofetch gnome-mines gnome-mahjongg gnome-sudoku --no-install-recommends
 ```
 ## monitor and visual configuration
-you might want to change LVDS-1 to your primary monitor
+change primary monitor
 ```bash
-xrandr --output LVDS-1 --primary
+xrandr --output $(xrandr | grep \ connected | sed "s/ .*//g") --primary
 lxappearance # choose Arc-Dark as theme there
 ```
 ## vim configuration

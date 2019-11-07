@@ -47,6 +47,7 @@ let g:multi_cursor_exit_from_insert_mode = 0
 let g:multi_cursor_start_key = '<C-m>'
 let g:multi_cursor_next_key = '<C-m>'
 let g:multi_cursor_quit_key = '<Esc>'
+let g:vimtex_latexmk_enabled = 0
 
 map <C-n> :NERDTreeToggle<CR>
 map <tab> :tabn<cr>

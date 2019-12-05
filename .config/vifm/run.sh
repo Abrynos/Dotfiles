@@ -1,3 +1,4 @@
+#!/bin/sh
 DIR=~/.config/vifm/lastdir
 
 if [ -f $DIR ];

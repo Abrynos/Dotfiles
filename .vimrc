@@ -11,12 +11,13 @@ set background=dark
 
 " initiate Vundle
 let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
+
+" start Plugin list
 call vundle#begin()
 
-" let Vundle manage Vundle, required
+" let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
 
-" start plugin defintion
 Plugin 'pangloss/vim-javascript'
 Bundle 'jelera/vim-javascript-syntax'
 Plugin 'mxw/vim-jsx'
@@ -29,38 +30,54 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'whiteinge/diffconflicts'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jreybert/vimagit'
 Plugin 'lervag/vimtex'
 
-" end plugin definition
+" end Plugin list
 call vundle#end()
 
 " ------------------------------------------------------------------
-" ---------------------- CUSTOM CONFIGURATION ----------------------
+" ---------------------- PLUGIN CONFIGURATION ----------------------
 " ------------------------------------------------------------------
-"  these settings have to be done before my mappings as they would not let me bind <C-n> otherwise
 let g:multi_cursor_use_default_mapping = 0
 let g:multi_cursor_exit_from_visual_mode = 0
 let g:multi_cursor_exit_from_insert_mode = 0
 let g:multi_cursor_start_key = '<C-m>'
 let g:multi_cursor_next_key = '<C-m>'
 let g:multi_cursor_quit_key = '<Esc>'
+
 let g:vimtex_latexmk_enabled = 0
 
+" ------------------------------------------------------------------
+" -------------------------- KEYBINDINGS ---------------------------
+" ------------------------------------------------------------------
 map <C-n> :NERDTreeToggle<CR>
 map <tab> :tabn<cr>
 map <S-Tab> :tabp<cr>
 map q :q<cr>
-map <C-g> :DiffConflicts<cr>
-"map 2 :diffget 2<cr>:diffu<cr>
-"map 3 :diffget 3<cr>:diffu<cr>
+map <space> :wincmd w<cr>
+
 xnoremap p "0p
 inoremap <Nul> <C-n>
 
+" ------------------------------------------------------------------
+" -------------------------- AUTO COMMANDS -------------------------
+" ------------------------------------------------------------------
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" ------------------------------------------------------------------
+" ---------------------------- SETTINGS ----------------------------
+" ------------------------------------------------------------------
 set number
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 set foldmethod=indent
 set foldlevel=200
+set switchbuf=usetab,newtab
+
+set noexpandtab
+set copyindent
+set preserveindent
+set softtabstop=0
+set shiftwidth=4
+set tabstop=4
 

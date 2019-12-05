@@ -5,6 +5,8 @@
 set $mod Mod1
 # set terminal to gnome-terminal
 set $terminal "gnome-terminal"
+# open terminal in last dir opened with vifm
+set $termDir "gnome-terminal --working-directory=`~/.config/vifm/echo_last_dir.sh`"
 # set filebrowser to open vifm in terminal
 set $fileBrowser "gnome-terminal -e vifm"
 
@@ -67,6 +69,7 @@ bindsym $mod+d exec "rofi -show run -config ~/.config/rofi/config.rasi"
 
 # open terminal
 bindsym $mod+Return exec $terminal
+bindsym $mod+Shift+Return exec $termDir
 
 # open file browser
 bindsym $mod+b exec $fileBrowser

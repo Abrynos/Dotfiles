@@ -4,7 +4,7 @@
 su
 apt install xinit i3 vim git network-manager debconf sudo
 exit
-sudo apt install scrot i3blocks curl thunar lxappearance network-manager-gnome inkscape lm-sensors numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh gnome-terminal chromium chromium-sandbox acpi gtk2-engines-pixbuf x11-xserver-utils vifm alsa-utils volumeicon-alsa neofetch gnome-mines gnome-mahjongg gnome-sudoku --no-install-recommends
+sudo apt install scrot i3blocks curl thunar lxappearance network-manager-gnome inkscape lm-sensors numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh gnome-terminal chromium chromium-sandbox acpi gtk2-engines-pixbuf x11-xserver-utils vifm alsa-utils volumeicon-alsa neofetch gnome-mines gnome-mahjongg gnome-sudoku evince --no-install-recommends
 ```
 ## monitor and visual configuration
 change primary monitor

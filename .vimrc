@@ -70,6 +70,8 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " ---------------------------- SETTINGS ----------------------------
 " ------------------------------------------------------------------
 set number
+set hlsearch
+set incsearch
 set foldmethod=indent
 set foldlevel=200
 set switchbuf=usetab,newtab

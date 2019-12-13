@@ -79,7 +79,7 @@ filextype *.html,*.htm
 
 " PDF
 filetype *.pdf
-        \ evince %f,
+        \ evince %f &,
 
 " Man page
 filetype *.[1-8] man ./%c

@@ -81,6 +81,26 @@ filextype *.html,*.htm
 filetype *.pdf
         \ evince %f &,
 
+" MP4
+filetype *.mp4
+        \ chromium %f &,
+
+" mp3
+filetype *.mp3
+        \ chromium %f &,
+
+" PNG
+filetype *.png
+        \ chromium %f &,
+
+" JPG
+filetype *.jpg
+        \ chromium %f &,
+
+" JPEG
+filetype *.jpeg
+        \ chromium %f &,
+
 " Man page
 filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b

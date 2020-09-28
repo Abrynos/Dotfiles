@@ -63,6 +63,7 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 command! diff vim -d %f %F
 command! zip zip -r %f.zip %f
 command! unzip unzip %f
+command! untar tar -xf %f
 command! make !!make %a
 command! mv :!mv %f %a
 command! cp :!cp %f %a

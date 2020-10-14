@@ -200,6 +200,7 @@ for_window [class="^Gnome-screenshot$"] floating enable
 for_window [class="jetbrains-.+" title="^(win0|Customize .+)$"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]
+for_window [title="Android Emulator - .+"] floating enable
 
 ####################################################################################
 #                                       modes

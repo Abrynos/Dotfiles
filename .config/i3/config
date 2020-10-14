@@ -196,6 +196,7 @@ for_window [class="Thunderbird"] layout tabbed
 # fix Steam, VeryCrypt, Jetbrains popups and MS Teams notifications
 for_window [class="^Steam$"] floating enable
 for_window [class="^Veracrypt$"] floating enable
+for_window [class="^Gnome-screenshot$"] floating enable
 for_window [class="jetbrains-.+" title="^(win0|Customize .+)$"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]

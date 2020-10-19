@@ -3,7 +3,7 @@
 ICON=~/.config/i3/lock.png
 TMPBG=/tmp/screen.png
 
-scrot $TMPBG
+import -window root $TMPBG
 convert $TMPBG -scale 10% -scale 1000% $TMPBG
 if (( `xrandr | grep -c ' connected'` == 1 ));
 then

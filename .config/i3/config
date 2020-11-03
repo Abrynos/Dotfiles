@@ -188,15 +188,14 @@ bindsym $mod+Control+Shift+l move workspace to output right
 # you can find out the window class by running 'xprop WM_CLASS' and clicking on a window
 # special workspaces
 bindsym $mod+c workspace $workspaceCommunication
-assign [class="Ferdi"] $workspaceCommunication
-assign [class="Thunderbird"] $workspaceCommunication
-for_window [class="Ferdi"] layout tabbed
-for_window [class="Thunderbird"] layout tabbed
+assign [class="^Ferdi$"] $workspaceCommunication
+assign [class="^Thunderbird$"] $workspaceCommunication
+for_window [class="^Ferdi$"] layout tabbed
+for_window [class="^Thunderbird$"] layout tabbed
 
-# fix Steam, VeryCrypt, Jetbrains popups and MS Teams notifications
 for_window [class="^Steam$"] floating enable
 for_window [class="^Veracrypt$"] floating enable
-for_window [class="^Gnome-screenshot$"] floating enable
+for_window [class="^Chromium$"] border pixel 0
 for_window [class="jetbrains-.+" title="^(win0|Customize .+)$"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]

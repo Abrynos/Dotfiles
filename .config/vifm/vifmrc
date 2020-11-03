@@ -65,8 +65,8 @@ command! zip zip -r %f.zip %f
 command! unzip unzip %f
 command! untar tar -xf %f
 command! make !!make %a
-command! mv :!mv %f %a
-command! cp :!cp %f %a
+command! mv :!if [ -z "%a" ]; then mv %f %D/; else mv %f %a; fi
+command! cp :!if [ -z "%a" ]; then cp %f %D/; else cp %f %a; fi
 command! reload :write | restart
 
 " ------------------------------------------------------------------------------

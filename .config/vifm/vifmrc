@@ -76,31 +76,15 @@ filextype *.ps,*.eps,*.ps.gz
 
 " Web
 filextype *.html,*.htm
-        \ less %f,
+        \ less %f %i,
 
 " PDF
 filetype *.pdf
-        \ evince %f &,
+        \ evince %f %i &,
 
 " MP4
-filetype *.mp4
-        \ chromium %f &,
-
-" mp3
-filetype *.mp3
-        \ chromium %f &,
-
-" PNG
-filetype *.png
-        \ chromium %f &,
-
-" JPG
-filetype *.jpg
-        \ chromium %f &,
-
-" JPEG
-filetype *.jpeg
-        \ chromium %f &,
+filetype *.mp4,*.mp3,*.png,*.jpg,*.jpeg
+        \ chromium %f %i &,
 
 " Man page
 filetype *.[1-8] man ./%c

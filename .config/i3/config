@@ -196,7 +196,7 @@ for_window [class="^Thunderbird$"] layout tabbed
 for_window [class="^Steam$"] floating enable
 for_window [class="^Veracrypt$"] floating enable
 for_window [class="^Chromium$"] border pixel 0
-for_window [class="jetbrains-.+" title="^(win0|Customize .+)$"] floating enable
+for_window [class="^jetbrains-.+" title="^(Welcome .+|win0|Customize .+)$"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]
 for_window [title="Android Emulator - .+"] floating enable

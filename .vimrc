@@ -58,12 +58,13 @@ map <S-Tab> :tabp<cr>
 map q :q<cr>
 map <space> :wincmd w<cr>
 
-xnoremap p "0p
 inoremap <Nul> <C-n>
 
 " ------------------------------------------------------------------
 " -------------------------- AUTO COMMANDS -------------------------
 " ------------------------------------------------------------------
+
+" exit totally if last open buffer is NERDTree
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ------------------------------------------------------------------
@@ -82,4 +83,28 @@ set preserveindent
 set softtabstop=0
 set shiftwidth=4
 set tabstop=4
+
+" Don't indent namespace and template
+function! CppNoTemplateIndent()
+    let l:cline_num = line('.')
+    let l:cline = getline(l:cline_num)
+    let l:pline_num = prevnonblank(l:cline_num - 1)
+    let l:pline = getline(l:pline_num)
+    while l:pline =~# '\(^\s*{\s*\|^\s*//\|^\s*/\*\|\*/\s*$\)'
+        let l:pline_num = prevnonblank(l:pline_num - 1)
+        let l:pline = getline(l:pline_num)
+    endwhile
+    let l:retv = cindent('.')
+    let l:cindent = indent(l:pline_num)
+    if l:pline =~# '^\s*template\s*<\s*$'
+        let l:retv = l:cindent
+    elseif l:pline =~# '\s*typename\s*.*>\s*$'
+        let l:retv = l:cindent
+    endif
+    return l:retv
+endfunction
+
+if has("autocmd")
+    autocmd BufEnter *.{cc,cxx,cpp,h,hh,hpp,hxx} setlocal indentexpr=CppNoTemplateIndent()
+endif
 

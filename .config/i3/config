@@ -5,6 +5,9 @@
 set $mod Mod1
 # set terminal to gnome-terminal
 set $terminal "gnome-terminal"
+# set screenshot command
+set $screenshot "import -window root - | convert - png:- | xclip -selection clipboard -target image/png -i"
+set $dragScreen "import - | convert - png:- | xclip -selection clipboard -target image/png -i"
 # open terminal in last dir opened with vifm
 set $termDir "gnome-terminal --working-directory=`~/.config/vifm/echo_last_dir.sh`"
 # set filebrowser to open vifm in terminal
@@ -77,6 +80,12 @@ bindsym $mod+b exec $fileBrowser
 # kill focused window
 bindsym $mod+q kill
 
+# take screenshots - command defines whether it is saved on disk or copied to clipboard (or whatever else)
+# $mod+Shift+s is alreaday used for putting the system to sleep so the shortcut won't be mnemonic
+# the p-key (short for "picture") is also out, because I want to be able to press it with one hand in case my right hand is already on the mouse for drag-and-drop
+bindsym $mod+a exec --no-startup-id $screenshot
+bindsym $mod+Shift+a --release exec --no-startup-id $dragScreen
+
 
 #
 # system
@@ -148,7 +157,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout
 bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+t layout toggle split
 
 
 ####################################################################################
@@ -199,7 +208,7 @@ for_window [class="^Chromium$"] border pixel 0
 for_window [class="^jetbrains-.+" title="^(Welcome .+|win0|Customize .+)$"] floating enable
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]
-for_window [title="Android Emulator - .+"] floating enable
+for_window [title="^(Android Emulator - .+|Android Virtual Device Manager)$"] floating enable
 
 ####################################################################################
 #                                       modes

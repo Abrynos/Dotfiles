@@ -103,7 +103,7 @@ exec_always --no-startup-id numlockx on
 exec_always compton -f
 
 # wallpaper (requires feh to be installed)
-exec_always --no-startup-id feh --bg-max ~/.config/i3/background.jpg
+exec_always --no-startup-id feh --no-fehbg --bg-max ~/.config/i3/background.jpg
 
 # network manager applet in taskbar
 exec_always --no-startup-id nm-applet

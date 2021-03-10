@@ -112,6 +112,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export VIMINIT="source ~/.config/vim/vimrc"
+
 xset b off
 
 neofetch

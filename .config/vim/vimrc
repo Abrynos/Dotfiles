@@ -1,3 +1,6 @@
+" following misc. settings must be at the top of the file as they are
+" partially overwritten - e.g. nocompatible sets viminfo which we want to set
+" manually
 set nocompatible
 syntax on
 filetype on
@@ -5,15 +8,27 @@ filetype plugin on
 filetype indent on
 set autoread
 set background=dark
+
+" ------------------------------------------------------------------
+" -------------------- DIRECTORY CONFIGURATION ---------------------
+" ------------------------------------------------------------------
+
+" move vim files from ~/.vim to ~/.config/vim
+let rtp=&runtimepath
+set runtimepath=~/.config/vim
+let &runtimepath.=','.rtp.',~/.config/vim/after'
+
+" move vim files from ~/.viminfo to ~/.config/vim/viminfo
+set viminfo+=n~/.config/vim/viminfo
+
 " ------------------------------------------------------------------
 " ---------------------- PLUGIN CONFIGURATION ----------------------
 " ------------------------------------------------------------------
-
 " initiate Vundle
-let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
+let &runtimepath.=',~/.config/vim/bundle/Vundle.vim'
 
 " start Plugin list
-call vundle#begin()
+call vundle#begin("~/.config/vim/bundle")
 
 " let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
@@ -70,6 +85,7 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " ------------------------------------------------------------------
 " ---------------------------- SETTINGS ----------------------------
 " ------------------------------------------------------------------
+
 set number
 set hlsearch
 set incsearch

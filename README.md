@@ -14,7 +14,7 @@ lxappearance # choose Arc-Dark as theme there
 ```
 ## vim configuration
 ```bash
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 git config --global core.editor "vim"
 git config --global user.name "Abrynos"

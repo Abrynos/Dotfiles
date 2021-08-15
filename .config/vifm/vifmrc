@@ -42,7 +42,7 @@ set scrolloff=4
 
 " Don't do too many requests to slow file systems
 if !has('win')
-    set slowfs=curlftpfs
+	set slowfs=curlftpfs
 endif
 
 " Set custom status line look
@@ -72,19 +72,23 @@ command! reload :write | restart
 " ------------------------------------------------------------------------------
 " PostScript
 filextype *.ps,*.eps,*.ps.gz
-        \ less %f,
+		\ less %f,
 
 " Web
 filextype *.html,*.htm
-        \ less %f %i,
+		\ less %f %i,
 
 " PDF
 filetype *.pdf
-        \ evince %f %i &,
+		\ evince %f %i &,
 
-" MP4
-filetype *.mp4,*.mp3,*.png,*.jpg,*.jpeg
-        \ chromium %f %i &,
+" video/audio
+filetype *.mp4,*.mp3
+		\ chromium %f %i &,
+
+" images
+filetype *.png,*.jpg,*.jpeg,*.gif,*.svg
+		\ feh -Z %d --start-at %f --scale-down &,
 
 " Man page
 filetype *.[1-8] man ./%c
@@ -92,50 +96,55 @@ fileviewer *.[1-8] man ./%c | col -b
 
 " MD5
 filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f %S,
+		\ {Check MD5 hash sum}
+		\ md5sum -c %f %S,
 
 " SHA1
 filetype *.sha1
-       \ {Check SHA1 hash sum}
-       \ sha1sum -c %f %S,
+		\ {Check SHA1 hash sum}
+		\ sha1sum -c %f %S,
 
 " SHA256
 filetype *.sha256
-       \ {Check SHA256 hash sum}
-       \ sha256sum -c %f %S,
+		\ {Check SHA256 hash sum}
+		\ sha256sum -c %f %S,
 
 " SHA512
 filetype *.sha512
-       \ {Check SHA512 hash sum}
-       \ sha512sum -c %f %S,
+		\ {Check SHA512 hash sum}
+		\ sha512sum -c %f %S,
 
 " GPG signature
 filetype *.asc
-       \ {Check signature}
-       \ !!gpg --verify %c,
+		\ {Check signature}
+		\ !!gpg --verify %c,
 
 " FuseZipMount
 filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
-       \ {View contents}
-       \ zip -sf %c | less,
-fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
+		\ {View contents}
+		\ zip -sf %c | less,
+fileviewer *.zip,*.jar,*.war,*.ear,*.oxt
+		\ zip -sf %c
 
 " ArchiveMount
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-fileviewer *.tar.txz,*.txz xz --list %c
-fileviewer *.tar tar -tf %c
+fileviewer *.tgz,*.tar.gz
+		\ tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2
+		\ tar -tjf %c
+fileviewer *.tar.txz,*.txz
+		\ xz --list %c
+fileviewer *.tar
+		\ tar -tf %c
 
 " Directories
 filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
+		\ {View in thunar}
+		\ Thunar %f &,
 
 " ------------------------------------------------------------------------------
 " What should be saved automatically between vifm runs
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+	\phistory,fhistory,dirstack,registers,bookmarks,bmarks
 
 " ------------------------------------------------------------------------------
 " preview window

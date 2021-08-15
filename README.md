@@ -45,6 +45,7 @@ For import to GitHub and similar services:
 ```bash
 gpg --armor --export # in case of multiple keys, append ID of wanted key obtainable via gpg --list-keys
 ```
+For GitHub: Make sure the email in the gpg key is the same as the email configured in git below.
 
 ## `git` configuration
 
@@ -55,7 +56,7 @@ git config --global user.email "6608231+Abrynos@users.noreply.github.com"
 git config --global pull.rebase true
 git config --global commit.gpgsign true
 ```
-In case of multiple gpg keys, add `git onfig --global user.signingKey {id}` replacing `{id}` with the ID of the wanted key, obtainable via `gpg --list-keys`.
+In case of multiple gpg keys, add `git config --global user.signingKey {id}` replacing `{id}` with the ID of the wanted key, obtainable via `gpg --list-keys`.
 
 ## `vim` configuration
 

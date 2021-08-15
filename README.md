@@ -52,6 +52,7 @@ gpg --armor --export # in case of multiple keys, append ID of wanted key obtaina
 git config --global core.editor "vim"
 git config --global user.name "Abrynos"
 git config --global user.email "6608231+Abrynos@users.noreply.github.com"
+git config --global pull.rebase true
 git config --global commit.gpgsign true
 ```
 In case of multiple gpg keys, add `git onfig --global user.signingKey {id}` replacing `{id}` with the ID of the wanted key, obtainable via `gpg --list-keys`.

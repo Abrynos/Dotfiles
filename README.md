@@ -82,3 +82,20 @@ vim +PluginInstall +qall
 ## Audio control
 
 After a reboot open preferences of sound icon in status bar and set the external mixer to 'pavucontrol'
+
+## IDEs
+
+### JetBrains
+
+Install [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/).
+```bash
+wget --show-progress -qO ./toolbox.tar.gz "https://data.services.jetbrains.com/products/download?platform=linux&code=TBA"
+TOOLBOX_TMP_DIR=$(mktemp -d)
+tar -C "$TOOLBOX_TMP_DIR" -xf ./toolbox.tar.gz
+rm ./toolbox.tar.gz
+$TOOLBOX_TMP_DIR/*/jetbrains-toolbox
+rm -r "$TOOLBOX_TMP_DIR"
+
+mkdir -p $HOME/bin
+ln -s $HOME/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox $HOME/bin/jetbrains-toolbox
+```

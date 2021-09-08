@@ -40,6 +40,8 @@ sudo reboot # not really required but a nice thing to do
 
 Use `nmcli` to configure network access. This note is especially concerned about the local DNS server.
 
+Edit `/etc/nsswitch.conf`. The line concerned about `hosts` should list `dns` first followed by `files` and nothing more (or just a comment alternatively).
+
 ## monitor and visual configuration
 
 Change primary monitor (execute when only that one is connected or choose manually instead of the grep/sed evaluation).

@@ -79,6 +79,11 @@ git clone "https://github.com/VundleVim/Vundle.vim.git" "${HOME}/.config/vim/bun
 vim +PluginInstall +qall
 ```
 
+## certificates
+
+- Copy root certificate to `/usr/local/share/ca-certificates/`
+- Run `sudo update-ca-certificates`
+
 ## Audio control
 
 After a reboot open preferences of sound icon in status bar and set the external mixer to 'pavucontrol'

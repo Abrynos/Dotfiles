@@ -1,14 +1,39 @@
-configuration {
-	color-normal: "argb:031d1f21, #c4cbd4, argb:96404552, #4084d6, #f9f9f9";
-	color-urgent: "argb:2c1d1f21, #cc6666, argb:e54b5160, #a54242, #f9f9f9";
-	color-active: "argb:2c1d1f21, #cc6666, argb:e54b5160, #a54242, #f9f9f9";
-	color-window: "argb:d42d303b, #7c8389, #1d1f21";
-	width: 100;
-	lines: 5;
+* {
+	active-text: #c4cbd4;
+
+	normal-background: argb:00000000;
+	normal-foreground: var(active-text);
+
+	selected-normal-background: #4084d6;
+	selected-normal-background: #607a99;
+	selected-normal-foreground: var(active-text);
+	
+	alternate-normal-background: argb:964d566e;
+	alternate-normal-foreground: var(active-text);
+}
+
+mainbox {
+	padding: 10;
+	background-color: argb:c6363c4d;
+	border-radius:10px;
+}
+
+window {
 	padding: 400;
-	eh: 1;
-	separator-style: "solid";
-	hide-scrollbar: true;
 	fullscreen: true;
+	background-color: argb:d42d303b;
+	separatorcolor: #1d1f21;
+	border: 0;
+}
+
+element selected {
+	border-radius: 3px;
+}
+
+listview {
+	scrollbar: false;
+	padding: 5 0 0 0;
+	border-color: #7c8389;
+	border: 2px solid 0px 0px;
 }
 

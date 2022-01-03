@@ -83,7 +83,7 @@ bindsym $mod+q kill
 # take screenshots - command defines whether it is saved on disk or copied to clipboard (or whatever else)
 # $mod+Shift+s is alreaday used for putting the system to sleep so the shortcut won't be mnemonic
 # the p-key (short for "picture") is also out, because I want to be able to press it with one hand in case my right hand is already on the mouse for drag-and-drop
-bindsym $mod+a exec --no-startup-id $screenshot
+bindsym $mod+a --release exec --no-startup-id $screenshot
 bindsym $mod+Shift+a --release exec --no-startup-id $dragScreen
 
 

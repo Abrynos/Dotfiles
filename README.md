@@ -30,7 +30,7 @@ From here on we do not need the `root` user any more.
 
 Now that `git` is installed, it's time to `git clone` this repository to normal users home directory. Copy and pasting the things to come is easier than typing them manually.
 ```bash
-sudo apt install scrot i3blocks curl thunar lxappearance network-manager-gnome inkscape lm-sensors numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh gnome-terminal chromium chromium-sandbox acpi gtk2-engines-pixbuf x11-xserver-utils vifm alsa-utils volumeicon-alsa neofetch gnome-mines gnome-mahjongg gnome-sudoku evince pulseaudio pavucontrol xclip open-vm-tools texlive-full htop --no-install-recommends
+sudo apt install scrot i3blocks curl thunar gvfs gvfs-backends gvfs-fuse lxappearance network-manager-gnome inkscape lm-sensors numlockx arc-theme imagemagick fonts-font-awesome rofi compton feh gnome-terminal chromium chromium-sandbox acpi gtk2-engines-pixbuf x11-xserver-utils vifm alsa-utils volumeicon-alsa neofetch gnome-mines gnome-mahjongg gnome-sudoku evince pulseaudio pavucontrol xclip open-vm-tools texlive-full htop --no-install-recommends
 sudo reboot # not really required but a nice thing to do
 ```
 

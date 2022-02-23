@@ -87,8 +87,11 @@ filetype *.mp4,*.mp3
 		\ chromium %f %i &,
 
 " images
-filetype *.png,*.jpg,*.jpeg,*.gif,*.svg
+filetype *.png,*.jpg,*.jpeg,*.gif
 		\ feh -Z %d --start-at %f --scale-down &,
+filetype *.svg
+		\ chromium %f %i &,
+
 
 " Man page
 filetype *.[1-8] man ./%c

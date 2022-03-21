@@ -3,15 +3,21 @@
 ####################################################################################
 # set mod-key to alt
 set $mod Mod1
-# set terminal to gnome-terminal
-set $terminal "gnome-terminal"
+
+# set terminal to kitty
+set $terminal "kitty"
+
+# open terminal in last dir opened with vifm
+set $termDir "kitty --working-directory $(if [ -f $HOME/.config/vifm/lastdir ]; then cat $HOME/.config/vifm/lastdir; else echo '$HOME'; fi)"
+
+# set filebrowser to open vifm in terminal
+set $fileBrowser "kitty -e vifm"
+
+
 # set screenshot command
 set $screenshot "import -window root - | convert - png:- | xclip -selection clipboard -target image/png -i"
 set $dragScreen "import - | convert - png:- | xclip -selection clipboard -target image/png -i"
-# open terminal in last dir opened with vifm
-set $termDir "gnome-terminal --working-directory=`~/.config/vifm/echo_last_dir.sh`"
-# set filebrowser to open vifm in terminal
-set $fileBrowser "gnome-terminal -e vifm"
+
 
 # Set workspace names
 set $workspace1 "1: Workspace 1"

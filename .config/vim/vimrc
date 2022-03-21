@@ -24,33 +24,24 @@ set viminfo+=n~/.config/vim/viminfo
 " ------------------------------------------------------------------
 " ---------------------- PLUGIN CONFIGURATION ----------------------
 " ------------------------------------------------------------------
-" initiate Vundle
-let &runtimepath.=',~/.config/vim/bundle/Vundle.vim'
+call plug#begin()
 
-" start Plugin list
-call vundle#begin("~/.config/vim/bundle")
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
+Plug 'isRuslan/vim-es6'
+Plug 'posva/vim-vue'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'jreybert/vimagit'
+Plug 'lervag/vimtex'
 
-" let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'pangloss/vim-javascript'
-Bundle 'jelera/vim-javascript-syntax'
-Plugin 'mxw/vim-jsx'
-Plugin 'elzr/vim-json'
-Plugin 'isRuslan/vim-es6'
-Plugin 'posva/vim-vue'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'jreybert/vimagit'
-Plugin 'lervag/vimtex'
-
-" end Plugin list
-call vundle#end()
+call plug#end()
 
 " ------------------------------------------------------------------
 " ---------------------- PLUGIN CONFIGURATION ----------------------
@@ -87,6 +78,8 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 set number
 set hlsearch
 set incsearch
+set scrolloff=1
+set autoread
 set foldmethod=indent
 set foldlevel=200
 set switchbuf=usetab,newtab

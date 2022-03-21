@@ -49,7 +49,7 @@ Change primary monitor (execute when only that one is connected or choose manual
 ```bash
 xrandr --output $(xrandr | grep \ connected | sed "s/ .*//g") --primary
 ```
-Run `lxappearance` and choose `Arc-Dark` theme in the GUI
+Run `lxappearance` and choose a dark theme in the GUI
 
 ## ssh key
 
@@ -82,8 +82,8 @@ In case of multiple gpg keys, add `git config --global user.signingKey {id}` rep
 ## `vim` configuration
 
 ```bash
-git clone "https://github.com/VundleVim/Vundle.vim.git" "${HOME}/.config/vim/bundle/Vundle.vim"
-vim +PluginInstall +qall
+curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugUpgrade +PlugUpdate +qall
 ```
 
 ## certificates

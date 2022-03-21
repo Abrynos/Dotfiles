@@ -84,11 +84,12 @@ filetype *.pdf
 
 " video/audio
 filetype *.mp4,*.mp3
-		\ chromium %f %i &,
+		\ vlc %f %i &,
 
 " images
 filetype *.png,*.jpg,*.jpeg,*.gif
 		\ feh -Z %d --start-at %f --scale-down &,
+
 filetype *.svg
 		\ chromium %f %i &,
 

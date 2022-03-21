@@ -100,7 +100,7 @@ bindsym $mod+Shift+s exec "~/.config/i3/lock.sh; sleep 1; systemctl hibernate -i
 exec_always --no-startup-id numlockx on
 
 # slight animations (ease-in and ease-out when switching workspaces for example)
-exec_always compton -f
+exec_always picom -f
 
 # wallpaper (requires feh to be installed)
 exec_always --no-startup-id feh --no-fehbg --bg-max ~/.config/i3/background.jpg

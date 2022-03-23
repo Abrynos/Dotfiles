@@ -115,7 +115,5 @@ fi
 export VIMINIT="source ~/.config/vim/vimrc"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-xset b off
-
 neofetch
 

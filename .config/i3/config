@@ -105,14 +105,11 @@ bindsym $mod+Shift+s exec "~/.config/i3/lock.sh; sleep 1; systemctl hibernate -i
 # keep numlock on
 exec_always --no-startup-id numlockx on
 
-# slight animations (ease-in and ease-out when switching workspaces for example)
+# slight animations (ease-in and ease-out when switching workspaces for example) and transparency
 exec_always picom -f
 
 # wallpaper (requires feh to be installed)
 exec_always --no-startup-id feh --no-fehbg --bg-max ~/.config/i3/background.jpg
-
-# network manager applet in taskbar
-exec_always --no-startup-id nm-applet
 
 # volume control applet in taskbar
 exec_always --no-startup-id if ! pidof -o %PPID -x "volumeicon">/dev/null; then volumeicon; fi
@@ -203,21 +200,17 @@ bindsym $mod+Control+Shift+l move workspace to output right
 # you can find out the window class by running 'xprop WM_CLASS' and clicking on a window
 # special workspaces
 bindsym $mod+c workspace $workspaceCommunication
-assign [class="^Ferdi$"] $workspaceCommunication
-assign [class="^Thunderbird$"] $workspaceCommunication
-for_window [class="^Ferdi$"] layout tabbed
-for_window [class="^Thunderbird$"] layout tabbed
+assign [class="^thunderbird$"] $workspaceCommunication
+assign [class="^discord$"] $workspaceCommunication
 
 for_window [class="^Steam$"] floating enable
 for_window [class="^Veracrypt$"] floating enable
 for_window [class="^jetbrains-toolbox"] floating enable
 for_window [class="^jetbrains-.+" title="^(Welcome .+|win0|Customize .+)$"] floating enable
-for_window [title="Microsoft Teams Notification"] floating enable
-no_focus [title="Microsoft Teams Notification"]
 for_window [title="^(Android Emulator - .+|Android Virtual Device Manager)$"] floating enable
 
 for_window [class="^Chromium$"] border pixel 0
-for_window [class="^jetbrains-toolbox"] border pixel 0
+for_window [class="^jetbrains-toolbox$"] border pixel 0
 
 # some floating windows are displayed half outside the screen for me - give me a way to get them fully on screen
 bindsym $mod+Shift+c move absolute position center
@@ -264,3 +257,4 @@ mode $monitorMode {
 mode $noModMode {
 	bindsym $mod+i mode $defaultMode
 }
+

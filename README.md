@@ -7,7 +7,7 @@ Replace `/etc/apt/sources.list`:
 # stable updates
 deb http://deb.debian.org/debian/ stable main contrib non-free
 deb http://deb.debian.org/debian/ stable-updates main contrib non-free
-deb http://deb.debian.org/debian-security stable/updates main
+deb http://deb.debian.org/debian-security stable-security main
 
 # testing updates
 deb http://deb.debian.org/debian/ testing main contrib non-free
